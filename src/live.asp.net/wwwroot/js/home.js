@@ -80,7 +80,7 @@
     }
 
     function countdownTo(futureDate, tickCallback, endCallback) {
-        var interval = window.setInterval(function () {
+        var callback = function () {
             var now = new Date(),
                 diff = dateDiff(now, futureDate);
 
@@ -92,7 +92,9 @@
             }
 
             tickCallback(diff);
-        }, 500);
+        };
+        callback()
+        var interval = window.setInterval(callback, 500);
     }
 
     function data(el, name) {
